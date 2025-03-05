@@ -1,0 +1,102 @@
+Review1:
+// Validate input parameters to ensure userName and password are not null or empty  
+// This prevents unnecessary processing and potential NullPointerExceptions  
+// Avoid direct static method calls like UserGateway.findByName  
+// Consider using dependency injection for better testability and maintainability  
+// Replace hardcoded string "Valid Password" with a constant  
+// This improves readability and prevents magic strings in code  
+// Ensure proper exception handling for cryptographer.decrypt  
+// Decryption failures should be handled gracefully to prevent application crashes  
+// Verify that `session` is correctly initialized before calling session.initialize()  
+// Prevents potential NullPointerException if session is not properly instantiated  
+
+
+Review2:
+// Avoid modifying the global variable `name` inside the function  
+// Instead, return the formatted string or use a local variable  
+// Ensure `name` is not null or empty before calling `Split(" ")`  
+// Prevents potential NullReferenceException or IndexOutOfRangeException  
+// Use a more robust approach to handle names with more than two words  
+// The current implementation assumes exactly two words, which may cause errors  
+// Consider using string interpolation directly inside Console.WriteLine  
+// Eliminates the need for modifying `name` and improves readability  
+
+
+Review3:
+// Function name uses double negation, making it harder to read  
+// Consider renaming to `IsDOMNodePresent` and inverting the logic for clarity  
+// Ensure `node` is not null or empty before processing  
+// Prevents potential NullReferenceException or incorrect results  
+// The conditional statement `if (!IsDOMNodeNotPresent(node))` is confusing  
+// A direct check like `if (IsDOMNodePresent(node))` would improve readability  
+
+
+Review4:
+// `_type` should be explicitly declared as `private` for clarity and encapsulation  
+// Consider using a `readonly` field or a property if the value doesn't change  
+// `_type` is a `string`, but character literals ('777') are used in the switch statement  
+// Change `'777'` to `"777"` to avoid compilation errors  
+// Add a `default` case in the switch statement to handle unexpected `_type` values  
+// Prevents potential issues if an unrecognized airplane type is encountered  
+// The logic for computing cruising altitude is inconsistent  
+// Consider refactoring by moving type-specific logic into subclasses (use polymorphism)  
+// Ensure `GetMaxAltitude()`, `GetPassengerCount()`, and `GetFuelExpenditure()` are defined  
+// Missing method definitions may cause errors or unexpected behavior  
+// Return type should be explicitly defined with a default return value  
+// If `_type` does not match any case, the function should still return a valid value  
+ 
+
+Review5:
+// Using `vehicle.GetType() == typeof(Bicycle)` is not ideal  
+// Prefer using polymorphism with an interface or base class (e.g., `IVehicle.TravelTo(Location)`)  
+// The `as` operator can return `null` if casting fails  
+// Add null checks before calling methods to prevent NullReferenceException  
+// `new Location("texas")` should use consistent casing  
+// Consider making "Texas" a constant to avoid hardcoded strings  
+// The method does not return a `Path` as expected  
+// Ensure that both `PeddleTo()` and `DriveTo()` return a `Path`, or explicitly return a value  
+// Consider adding a `default` case or exception handling  
+// If `vehicle` is not a `Bicycle` or `Car`, the function silently does nothing  
+// The function does not handle `null` vehicle input  
+// Add a `null` check at the beginning to avoid potential runtime errors  
+ 
+
+Review6:
+// Use `Path.Combine()` instead of string concatenation for file paths  
+// Ensures cross-platform compatibility and avoids path errors  
+// Consider validating `name` to ensure it is not null or empty  
+// Prevents unexpected runtime errors when creating a file  
+// Avoid hardcoding `./temp/` path  
+// Use a configurable setting or constant for better maintainability  
+// Ensure `Touch()` handles exceptions properly  
+// File operations can fail due to permissions or invalid paths  
+// If `Touch()` modifies state, consider returning a success status or logging errors  
+// Helps with debugging and understanding function execution outcomes  
+
+Review7:
+// The `GetInstance()` method is missing a return type  
+// It should be `public static DBConnection GetInstance()` to avoid compilation errors  
+// The current implementation is not thread-safe  
+// Use `lock` or `Lazy<T>` to prevent race conditions in a multi-threaded environment  
+// Consider using the Singleton pattern properly with `readonly` or `volatile`  
+// Ensures proper memory visibility and prevents multiple instance creation  
+// The constructor is private but should be explicitly marked with comments  
+// Helps clarify the intent that instantiation is restricted outside the class  
+// Ensure `_instance` is explicitly initialized in a thread-safe manner  
+// Using `Lazy<DBConnection>` can simplify lazy initialization safely  
+// Consider implementing `IDisposable` if the connection needs cleanup  
+// Ensures proper resource management and avoids connection leaks  
+  
+
+Review8:
+// Consider using a `MenuOptions` object instead of multiple parameters  
+// Improves readability and maintainability when adding more options in the future  
+// Validate `title`, `body`, and `buttonText` to ensure they are not null or empty  
+// Prevents unexpected behavior or UI issues  
+// Add XML documentation to describe the function's purpose and parameters  
+// Helps other developers understand how to use this method correctly  
+// Consider providing default values for parameters where applicable  
+// Reduces the need to pass all arguments if some have common defaults  
+// Ensure `cancellable` is properly handled in the menu logic  
+// The function signature suggests it affects behavior, but the implementation is missing  
+

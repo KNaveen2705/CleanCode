@@ -1,0 +1,104 @@
+Review1:
+
+// Issues in the Given Code:
+// 1. Unnecessary null/empty check can be simplified.
+// 2. Redundant `if-else` conditions can be replaced with a cleaner approach.
+// 3. Inefficient use of `ToLower()`, use `StringComparison.OrdinalIgnoreCase` instead.
+// 4. Too many return statements; can be optimized for readability.
+
+// Optimized Code:
+public bool IsShopOpen(string day)
+{
+    if (string.IsNullOrWhiteSpace(day)) return false; // Check for null or empty input
+
+    // Check if the given day is Friday, Saturday, or Sunday (case-insensitive)
+    return day.Equals("friday", StringComparison.OrdinalIgnoreCase) ||
+           day.Equals("saturday", StringComparison.OrdinalIgnoreCase) ||
+           day.Equals("sunday", StringComparison.OrdinalIgnoreCase);
+}
+
+Review3:
+
+// Issues in the Given Code:
+// 1. **Inefficient Recursion:** The current approach uses a naive recursive method, leading to exponential time complexity (O(2^n)).
+// 2. **Unnecessary Nested If Conditions:** The conditions for `n == 0` and `n == 1` can be handled more cleanly.
+// 3. **Magic Number (50) in Condition:** Hardcoding an arbitrary limit (50) is not ideal. Consider making it a constant or parameter.
+// 4. **Exception Handling:** Throwing a generic `System.Exception` is not recommended. Use `ArgumentOutOfRangeException` for better clarity.
+
+// Optimized Code Using Memoization (Dynamic Programming):
+public long Fibonacci(int n, Dictionary<int, long> memo = null)
+{
+    if (n < 0) throw new ArgumentOutOfRangeException(nameof(n), "Input must be a non-negative integer.");
+
+    memo ??= new Dictionary<int, long>(); // Initialize memoization dictionary if null
+
+    if (n == 0) return 0;
+    if (n == 1) return 1;
+
+    if (!memo.ContainsKey(n))
+    {
+        memo[n] = Fibonacci(n - 1, memo) + Fibonacci(n - 2, memo);
+    }
+
+    return memo[n]; // Return the memoized result
+}
+
+
+Review4:
+
+// Issues in the Given Code:
+// 1. **Inefficient `.Count()` in loop condition:** `l.Count()` is evaluated on every iteration; use `l.Length` instead for arrays.
+// 2. **Unclear variable name (`l` and `li`):** Use meaningful names like `cities` and `city`.
+// 3. **Potential readability issue:** If `li` is used much later in the loop, it can be hard to track.
+// 4. **Consider using a `foreach` loop:** A `foreach` loop simplifies iteration over an array and improves readability.
+
+// Optimized Code:
+var cities = new[] { "Austin", "New York", "San Francisco" };
+
+foreach (var city in cities)
+{
+    DoStuff();
+    DoSomeOtherStuff();
+
+    // ...
+    // ...
+    // ...
+    // Dispatching the current city
+    Dispatch(city);
+}
+
+Review5:
+
+// Avoid using magic numbers; define a constant for better readability.  
+const int AdminRole = 8;  
+if (userRole == AdminRole) // Check if the user is an Admin  
+{  
+    // Admin-specific logic  
+}  
+
+
+Review6:
+
+// Consider removing redundant "Car" prefix in property names for better readability.  
+// Use 'Make', 'Model', and 'Color' instead, as they are already within the 'Car' class.  
+// Example:  
+// public string Make { get; set; }  
+// public string Model { get; set; }  
+// public string Color { get; set; }  
+
+
+Review7:
+
+// Use a more descriptive variable name like 'formattedDate' instead of 'ymdstr'.  
+// Ensure the format aligns with the intended usage; "MMMM dd, yyyy" is a long date format.  
+// If localization is needed, consider using CultureInfo for better adaptability.  
+// Example: var formattedDate = DateTime.UtcNow.ToString("MMMM dd, yyyy", CultureInfo.InvariantCulture);  
+
+
+Review9:
+
+// Avoid using `null` as a default parameter value; consider using an explicit default like "Hipster Brew Co." directly.  
+// Example: `public void CreateMicrobrewery(string name = "Hipster Brew Co.")`  
+// This removes the need for the null check inside the method.  
+// If `null` should be allowed, use `??` instead of a ternary operator for cleaner code.  
+// Example: `var breweryName = name ?? "Hipster Brew Co.";`  

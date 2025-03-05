@@ -1,0 +1,16 @@
+Review1:Avoid single-letter names; use 'elapsedDays' instead
+Review2:Consider renaming 'dataFromDb' to 'employees' for better clarity.
+Review3:Use 'counter' instead of 'iCounter' for better readability.  
+		Use 'fullName' instead of 'strFullName' to follow naming conventions.  
+		Use 'modifiedDate' instead of 'dModifiedDate' for clarity.  
+Review4:Rename 'pDay' to 'day' for better readability.  
+		Rename 'pAmount' to 'amount' to follow naming conventions.  
+Review5:Maintain consistent casing: rename 'daysInMonth' to 'DAYS_IN_MONTH' or change 'DAYS_IN_WEEK' to 'daysInWeek'.  
+		Use double quotes instead of single quotes for string literals in the 'songs' list.  
+		Rename 'Artists' to 'artists' to follow camelCase naming for variables.  
+		Ensure consistent method naming: rename 'Restore_database' to 'RestoreDatabase' to follow PascalCase.  
+		Class names should be capitalized: rename 'animal' to 'Animal' for consistency.  
+Review6:Fix typo: change 'Datetime' to 'DateTime'.  
+		Rename 'sWorkDate' to 'startWorkDate' for better clarity.  
+		Rename 'modTime' to 'modificationTime' for consistency and readability.
+
